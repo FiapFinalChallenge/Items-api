@@ -47,6 +47,7 @@ services:
       - mysql-db
       - eureka-server
       - spring-cloud-config-server
+      - authentication-service
     networks:
       - ecommerce-network
 

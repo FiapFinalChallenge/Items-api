@@ -38,7 +38,7 @@ public class ItemController implements IItemController {
     }
 
     @Override
-    public void delete(Long id) {
+    public void deleteById(Long id) {
         service.deleteById(id);
     }
 }

@@ -21,5 +21,5 @@ public interface IItemController {
     public ItemResponse update(@PathVariable Long id, @RequestBody ItemRequest itemRequest);
 
     @DeleteMapping("{id}")
-    public void delete(@PathVariable Long id);
+    public void deleteById(@PathVariable Long id);
 }

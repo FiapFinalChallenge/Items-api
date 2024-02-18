@@ -10,11 +10,22 @@ import org.mapstruct.Mapping;
 public interface ItemMapper {
 
     @Mapping(target = "id", source = "item.id")
-    @Mapping(target = "title", source = "item.title")
+    @Mapping(target = "name", source = "item.name")
     @Mapping(target = "price", source = "item.price")
+    @Mapping(target = "category", source = "item.category")
+    @Mapping(target = "amount", source = "item.amount")
     ItemResponse convertToItemResponse(Item item);
 
-    @Mapping(target = "title", source = "itemRequest.title")
+    @Mapping(target = "name", source = "itemRequest.name")
     @Mapping(target = "price", source = "itemRequest.price")
+    @Mapping(target = "category", source = "itemRequest.category")
+    @Mapping(target = "amount", source = "itemRequest.amount")
     Item convertToItem(ItemRequest itemRequest);
+
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "itemRequest.name")
+    @Mapping(target = "price", source = "itemRequest.price")
+    @Mapping(target = "category", source = "itemRequest.category")
+    @Mapping(target = "amount", source = "itemRequest.amount")
+    Item convertToItemWithId(ItemRequest itemRequest, Long id);
 }

@@ -1,4 +1,13 @@
 package items.application.dto.response;
 
-public record ItemResponse(Long id, String title, Double price) {
+import items.domain.enums.EItemCategory;
+
+import java.math.BigDecimal;
+
+public record ItemResponse(
+        Long id,
+        String name,
+        BigDecimal price,
+        EItemCategory category,
+        Integer amount) {
 }

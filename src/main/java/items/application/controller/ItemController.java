@@ -1,6 +1,7 @@
 package items.application.controller;
 
 import items.application.controller.contract.IItemController;
+import items.application.dto.request.ItemRequest;
 import items.application.dto.response.ItemResponse;
 import items.domain.service.contract.IItemService;
 import lombok.RequiredArgsConstructor;
@@ -19,5 +20,25 @@ public class ItemController implements IItemController {
     @Override
     public List<ItemResponse> getAll() {
         return service.getAll();
+    }
+
+    @Override
+    public ItemResponse getById(Long id) {
+        return service.getById(id);
+    }
+
+    @Override
+    public ItemResponse create(ItemRequest itemRequest) {
+        return service.create(itemRequest);
+    }
+
+    @Override
+    public ItemResponse update(Long id, ItemRequest itemRequest) {
+        return service.update(id, itemRequest);
+    }
+
+    @Override
+    public void delete(Long id) {
+        service.deleteById(id);
     }
 }

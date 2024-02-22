@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ItemServiceImpl implements IItemService {
 
-    private static final String ITEM_NOT_FOUND = "Item not found";
+    private static final String ITEM_NOT_FOUND = "Not found item ID: ";
     private final ItemRepository repository;
     private final ItemMapper itemMapper;
 
@@ -30,7 +30,7 @@ public class ItemServiceImpl implements IItemService {
     @Override
     public ItemResponse getById(Long id) {
         return itemMapper.convertToItemResponse(repository
-                .findById(id).orElseThrow(() -> new EntityNotFoundException(ITEM_NOT_FOUND)));
+                .findById(id).orElseThrow(() -> new EntityNotFoundException(ITEM_NOT_FOUND + id)));
     }
 
     @Override

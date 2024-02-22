@@ -5,7 +5,7 @@ import items.application.dto.response.ItemResponse;
 import items.application.mapper.ItemMapper;
 import items.domain.repository.ItemRepository;
 import items.domain.service.contract.IItemService;
-import jakarta.ws.rs.NotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +30,7 @@ public class ItemServiceImpl implements IItemService {
     @Override
     public ItemResponse getById(Long id) {
         return itemMapper.convertToItemResponse(repository
-                .findById(id).orElseThrow(() -> new NotFoundException(ITEM_NOT_FOUND)));
+                .findById(id).orElseThrow(() -> new EntityNotFoundException(ITEM_NOT_FOUND)));
     }
 
     @Override

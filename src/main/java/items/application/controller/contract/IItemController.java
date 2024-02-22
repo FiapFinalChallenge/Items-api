@@ -2,6 +2,7 @@ package items.application.controller.contract;
 
 import items.application.dto.request.ItemRequest;
 import items.application.dto.response.ItemResponse;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,10 +16,10 @@ public interface IItemController {
     public ItemResponse getById(@PathVariable Long id);
 
     @PostMapping
-    public ItemResponse create(@RequestBody ItemRequest itemRequest);
+    public ItemResponse create(@RequestBody @Valid ItemRequest itemRequest);
 
     @PutMapping("{id}")
-    public ItemResponse update(@PathVariable Long id, @RequestBody ItemRequest itemRequest);
+    public ItemResponse update(@PathVariable Long id, @RequestBody @Valid ItemRequest itemRequest);
 
     @DeleteMapping("{id}")
     public void deleteById(@PathVariable Long id);

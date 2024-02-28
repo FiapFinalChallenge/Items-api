@@ -3,6 +3,7 @@ package items.domain.service.impl;
 import items.application.dto.request.ItemRequest;
 import items.application.dto.response.ItemResponse;
 import items.application.mapper.ItemMapper;
+import items.domain.model.Item;
 import items.domain.repository.ItemRepository;
 import items.domain.service.contract.IItemService;
 import jakarta.persistence.EntityNotFoundException;
@@ -29,8 +30,7 @@ public class ItemServiceImpl implements IItemService {
 
     @Override
     public ItemResponse getById(Long id) {
-        return itemMapper.convertToItemResponse(repository
-                .findById(id).orElseThrow(() -> new EntityNotFoundException(ITEM_NOT_FOUND + id)));
+        return itemMapper.convertToItemResponse(findById(id));
     }
 
     @Override
@@ -50,5 +50,17 @@ public class ItemServiceImpl implements IItemService {
     public void deleteById(Long id) {
         getById(id);
         repository.deleteById(id);
+    }
+
+    @Override
+    public void decreaseItemAmount(Long id, int amount) {
+        var item = findById(id);
+        item.decreaseAmount(amount);
+        repository.save(item);
+    }
+
+    private Item findById(Long id) {
+        return repository.findById(id)
+              .orElseThrow(() -> new EntityNotFoundException(ITEM_NOT_FOUND + id));
     }
 }

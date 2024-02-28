@@ -31,4 +31,8 @@ public class Item {
 
     @Column(name = "amount", nullable = false)
     private Integer amount;
+
+    public void decreaseAmount(int amount) {
+        this.amount -= amount;
+    }
 }

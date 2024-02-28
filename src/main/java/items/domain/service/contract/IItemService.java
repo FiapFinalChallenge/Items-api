@@ -16,4 +16,6 @@ public interface IItemService {
     ItemResponse update(Long id, ItemRequest itemRequest);
 
     void deleteById(Long id);
+
+    void decreaseItemAmount(Long id, int amount);
 }

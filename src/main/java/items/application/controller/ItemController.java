@@ -38,6 +38,11 @@ public class ItemController implements IItemController {
     }
 
     @Override
+    public void decreaseItemAmount(Long id, int amount) {
+        service.decreaseItemAmount(id, amount);
+    }
+
+    @Override
     public void deleteById(Long id) {
         service.deleteById(id);
     }

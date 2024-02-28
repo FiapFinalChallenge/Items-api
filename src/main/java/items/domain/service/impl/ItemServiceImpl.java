@@ -59,6 +59,13 @@ public class ItemServiceImpl implements IItemService {
         repository.save(item);
     }
 
+    @Override
+    public void increaseItemAmount(Long id, int amount) {
+        var item = findById(id);
+        item.increaseAmount(amount);
+        repository.save(item);
+    }
+
     private Item findById(Long id) {
         return repository.findById(id)
               .orElseThrow(() -> new EntityNotFoundException(ITEM_NOT_FOUND + id));

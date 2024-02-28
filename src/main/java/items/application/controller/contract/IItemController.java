@@ -25,6 +25,9 @@ public interface IItemController {
     @PutMapping("{id}/decrease")
     void decreaseItemAmount(@PathVariable Long id, @RequestParam @NotNull int amount);
 
+    @PutMapping("{id}/increase")
+    void increaseItemAmount(@PathVariable Long id, @RequestParam @NotNull int amount);
+
     @DeleteMapping("{id}")
     public void deleteById(@PathVariable Long id);
 }

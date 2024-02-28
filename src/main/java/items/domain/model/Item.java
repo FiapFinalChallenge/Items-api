@@ -35,4 +35,8 @@ public class Item {
     public void decreaseAmount(int amount) {
         this.amount -= amount;
     }
+
+    public void increaseAmount(int amount) {
+        this.amount += amount;
+    }
 }

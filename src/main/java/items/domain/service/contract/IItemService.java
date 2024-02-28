@@ -18,4 +18,6 @@ public interface IItemService {
     void deleteById(Long id);
 
     void decreaseItemAmount(Long id, int amount);
+
+    void increaseItemAmount(Long id, int amount);
 }

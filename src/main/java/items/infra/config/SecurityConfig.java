@@ -22,8 +22,13 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        String[] authWhitelist = {"/swagger-ui/**", "/v3/api-docs/**"};
+
         return http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth.anyRequest().hasAnyRole("ADMIN"))
+                .authorizeHttpRequests(auth -> {
+                    auth.requestMatchers(authWhitelist).permitAll();
+                    auth.anyRequest().hasAnyRole("ADMIN");
+                })
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

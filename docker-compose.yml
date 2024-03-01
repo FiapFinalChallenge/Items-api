@@ -1,7 +1,7 @@
 version: '3'
 services:
   mysql-db:
-    image: mysql:8.0.0
+    image: mysql:8.0.36
     environment:
       MYSQL_DATABASE: 'ecommerce'
       MYSQL_USER: 'user'
